@@ -6,9 +6,10 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { sensors } from "./data/sensors";
+import { Link } from "react-router-dom";
+import { sensors } from "../../data/sensors";
 
-const App = () => {
+const Overview = () => {
   return (
     <Grid m={5} container spacing={4}>
       {sensors.map((sensor) => (
@@ -19,7 +20,12 @@ const App = () => {
               <Typography variant="body1">{sensor.description}</Typography>
             </CardContent>
             <CardActions>
-              <Button variant="contained" sx={{ marginLeft: "auto" }}>
+              <Button
+                component={Link}
+                to={`/sensors/${sensor.id}`}
+                variant="contained"
+                sx={{ marginLeft: "auto" }}
+              >
                 Sensor detail
               </Button>
             </CardActions>
@@ -30,4 +36,4 @@ const App = () => {
   );
 };
 
-export { App };
+export { Overview };
